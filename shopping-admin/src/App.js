@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DataTable from "./components/DataTable";
-import "./App.css";
+import "./css/App.css";
 const App = (props) => {
   const selectList = ["전체", "상품명", "브랜드", "상품내용"];
   const [Selected, setSelected] = useState("");
