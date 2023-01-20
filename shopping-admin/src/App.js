@@ -42,12 +42,12 @@ const App = (props) => {
       <section className="middle">
         <div className="numberData">
           <p>
-            검색된 데이터 : <span>{"100"}</span>건
+            검색된 데이터 : <span>{productList.length}</span>건
           </p>
         </div>
       </section>
       <section className="bottom">
-        <DataTable />
+        <DataTable props={productList} />
       </section>
     </div>
   );

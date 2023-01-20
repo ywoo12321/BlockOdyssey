@@ -1,25 +1,39 @@
 import React, { useEffect, useState } from "react";
 import "../css/DataTable.css";
-const DataTable = () => {
-  const tittleList = [
-    "상품번호",
-    "상품명",
-    "브랜드",
-    "상품내용",
-    "가격",
-    "평점",
-    "재고",
-  ];
+const DataTable = (productList) => {
+  const tittleList = {
+    상품번호: "id",
+    상품명: "title",
+    브랜드: "brand",
+    상품내용: "description",
+    가격: "price",
+    평점: "rating",
+    재고: "stock",
+  };
   return (
     <>
       <div className="listTittle">
-        {tittleList.map((item, idx) => (
+        {Object.entries(tittleList).map(([item, idx]) => (
           <div className={item} value={item} key={idx}>
             {item}
           </div>
         ))}
       </div>
-      <div className="table">cons</div>
+      <div className="table">
+        {productList.props.map((product, productIdx) => (
+          <div className="product" key={productIdx}>
+            {Object.entries(tittleList).map(([item, itemIdx]) => (
+              <div className={item} value={item} key={itemIdx}>
+                {product[tittleList[item]].length > 40 ? (
+                  <p>{product[tittleList[item]].slice(0, 40)}...</p>
+                ) : (
+                  <p>{product[tittleList[item]]}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
       <div className="page">1,2,3,4,5</div>
     </>
   );
