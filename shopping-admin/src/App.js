@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DataTable from "./components/DataTable";
 import "./App.css";
 const App = (props) => {
   const selectList = ["전체", "상품명", "브랜드", "상품내용"];
@@ -8,7 +9,25 @@ const App = (props) => {
   };
   return (
     <div className="App">
-      <section className="top"></section>
+      <section className="top">
+        <div className="topHead">
+          <p>상품 검색</p>
+        </div>
+        <div className="topBottom">
+          <p>검색</p>
+          <div className="inputBox">
+            <select className="select" onChange={handleSelect} value={Selected}>
+              {selectList.map((item) => (
+                <option value={item} key={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+            <input />
+            <button>조회</button>
+          </div>
+        </div>
+      </section>
       <section className="middle">
         <div className="numberData">
           <p>
@@ -16,7 +35,9 @@ const App = (props) => {
           </p>
         </div>
       </section>
-      <section className="bottom"></section>
+      <section className="bottom">
+        <DataTable />
+      </section>
     </div>
   );
 };

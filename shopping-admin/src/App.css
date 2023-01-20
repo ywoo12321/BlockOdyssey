@@ -8,6 +8,63 @@
   height: 20vh;
   border: 1px solid #5f5f5f;
   border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.topHead {
+  width: 100%;
+  height: 50%;
+  border-bottom: 1px solid #5f5f5f;
+  display: flex;
+  align-items: center;
+}
+.topHead > p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 50px;
+}
+.topBottom {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.topBottom > p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 50px;
+}
+.inputBox {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.inputBox > select {
+  border-radius: 0.3rem;
+  width: 20%;
+  height: 50%;
+  font-size: 1rem;
+  padding-left: 10px;
+}
+.inputBox > input {
+  border-radius: 0.3rem;
+  width: 60%;
+  height: 50%;
+  font-size: 1rem;
+  padding-left: 20px;
+}
+.inputBox > button {
+  border-radius: 0.3rem;
+  width: 10%;
+  height: 50%;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  font-size: 1.2rem;
 }
 .middle {
   width: 98vw;
