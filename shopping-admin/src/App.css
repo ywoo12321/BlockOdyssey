@@ -19,6 +19,9 @@
 .numberData {
   text-align: left;
 }
+.numberData > p > span {
+  font-weight: bold;
+}
 .bottom {
   width: 98vw;
   height: 73vh;
