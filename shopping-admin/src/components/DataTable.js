@@ -10,16 +10,6 @@ const DataTable = () => {
     "평점",
     "재고",
   ];
-  const [productList, setProductList] = useState([]);
-  useEffect(() => {
-    fetch("https://dummyjson.com/products?limit=100", {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setProductList(res.products);
-      });
-  }, []);
   return (
     <>
       <div className="listTittle">
