@@ -10,6 +10,8 @@ const DataTable = (productList) => {
     평점: "rating",
     재고: "stock",
   };
+  let firstNumber = 1;
+  let lastNumber = 10;
   return (
     <>
       <div className="listTittle">
@@ -20,19 +22,21 @@ const DataTable = (productList) => {
         ))}
       </div>
       <div className="table">
-        {productList.props.map((product, productIdx) => (
-          <div className="product" key={productIdx}>
-            {Object.entries(tittleList).map(([item, itemIdx]) => (
-              <div className={item} value={item} key={itemIdx}>
-                {product[tittleList[item]].length > 40 ? (
-                  <p>{product[tittleList[item]].slice(0, 40)}...</p>
-                ) : (
-                  <p>{product[tittleList[item]]}</p>
-                )}
-              </div>
-            ))}
-          </div>
-        ))}
+        {productList.props
+          .slice(firstNumber - 1, lastNumber)
+          .map((product, productIdx) => (
+            <div className="product" key={productIdx}>
+              {Object.entries(tittleList).map(([item, itemIdx]) => (
+                <div className={item} value={item} key={itemIdx}>
+                  {product[tittleList[item]].length > 40 ? (
+                    <p>{product[tittleList[item]].slice(0, 40)}...</p>
+                  ) : (
+                    <p>{product[tittleList[item]]}</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          ))}
       </div>
       <div className="page">1,2,3,4,5</div>
     </>
