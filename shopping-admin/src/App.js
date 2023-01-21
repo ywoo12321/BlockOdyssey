@@ -79,7 +79,7 @@ const App = (props) => {
       <section className="middle">
         <div className="numberData">
           <p>
-            검색된 데이터 : <span>{productList.length}</span>건
+            검색된 데이터 : <span>{dataList.length}</span>건
           </p>
         </div>
       </section>
