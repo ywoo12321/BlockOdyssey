@@ -5,6 +5,7 @@ const App = (props) => {
   const selectList = ["전체", "상품명", "브랜드", "상품내용"];
   const [Selected, setSelected] = useState("");
   const [productList, setProductList] = useState([]);
+  const [dataList, setDataList] = useState([]);
   const [userInput, setUserInput] = useState("");
   const searchList = [];
   let searchTarget = "";
@@ -44,9 +45,7 @@ const App = (props) => {
         searchList.push(product);
       }
     });
-    searchList.length === 0
-      ? setProductList(productList)
-      : setProductList(searchList);
+    userInput === null ? setDataList(productList) : setDataList(searchList);
   };
   return (
     <div className="App">
@@ -77,7 +76,7 @@ const App = (props) => {
         </div>
       </section>
       <section className="bottom">
-        <DataTable props={productList} />
+        <DataTable props={dataList} />
       </section>
     </div>
   );
