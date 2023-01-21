@@ -9,8 +9,7 @@ const App = (props) => {
     브랜드: ["brand"],
     상품내용: ["description"],
   };
-  const [Selected, setSelected] = useState("");
-  const [searchTag, setSearchTag] = useState("");
+  const [Selected, setSelected] = useState("전체");
   const [productList, setProductList] = useState([]);
   const [dataList, setDataList] = useState([]);
   const [userInput, setUserInput] = useState("");
@@ -22,16 +21,13 @@ const App = (props) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.products);
         setProductList(res.products);
       });
   }, []);
   const handleSelect = (e) => {
     setSelected(e.target.value);
-    setSearchTag(e.target.value);
   };
   const getValue = (e) => {
-    console.log(e.target.value);
     setUserInput(e.target.value);
   };
   const getKeyByValue = (obj, value) => {
