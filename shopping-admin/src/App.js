@@ -5,6 +5,9 @@ const App = (props) => {
   const selectList = ["전체", "상품명", "브랜드", "상품내용"];
   const [Selected, setSelected] = useState("");
   const [productList, setProductList] = useState([]);
+  const [userInput, setUserInput] = useState("");
+  const searchList = [];
+  let searchTarget = "";
   useEffect(() => {
     fetch("https://dummyjson.com/products?limit=100", {
       method: "GET",
@@ -17,6 +20,33 @@ const App = (props) => {
   }, []);
   const handleSelect = (e) => {
     setSelected(e.target.value);
+  };
+  const getValue = (e) => {
+    console.log(e.target.value);
+    setUserInput(e.target.value);
+  };
+  const getKeyByValue = (obj, value) => {
+    let check = 0;
+    return ["brand", "description", "title"].map((item) => {
+      searchTarget = obj[item];
+      if (searchTarget.includes(value) === true) {
+        check += 1;
+      }
+      return check;
+    });
+  };
+  const add = (arr) => {
+    return arr.reduce((a, b) => a + b, 0);
+  };
+  const getData = (e) => {
+    productList.map((product) => {
+      if (add(getKeyByValue(product, userInput)) >= 1) {
+        searchList.push(product);
+      }
+    });
+    searchList.length === 0
+      ? setProductList(productList)
+      : setProductList(searchList);
   };
   return (
     <div className="App">
@@ -34,8 +64,8 @@ const App = (props) => {
                 </option>
               ))}
             </select>
-            <input />
-            <button>조회</button>
+            <input onChange={getValue} />
+            <button onClick={getData}>조회</button>
           </div>
         </div>
       </section>
