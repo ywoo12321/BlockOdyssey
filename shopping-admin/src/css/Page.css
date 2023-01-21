@@ -1,0 +1,32 @@
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin: 16px;
+}
+button {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: transparent;
+  border-radius: 0.3rem;
+  margin: 0;
+  font-size: 0.7rem;
+}
+button:hover {
+  background: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+button[disabled] {
+  color: grey;
+  cursor: revert;
+  transform: revert;
+}
+button[aria-current] {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid black;
+  cursor: revert;
+  transform: revert;
+}

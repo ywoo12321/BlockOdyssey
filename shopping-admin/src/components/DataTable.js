@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../css/DataTable.css";
+import Page from "./Page";
 const DataTable = (productList) => {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
@@ -53,6 +54,12 @@ const DataTable = (productList) => {
             <option value="50">50</option>
           </select>
         </label>
+        <Page
+          total={productList.props.length}
+          limit={limit}
+          page={page}
+          setPage={setPage}
+        />
       </div>
     </>
   );
