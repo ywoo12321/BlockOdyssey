@@ -22,6 +22,7 @@ const App = (props) => {
       .then((res) => res.json())
       .then((res) => {
         setProductList(res.products);
+        setDataList(res.products);
       });
   }, []);
   const handleSelect = (e) => {
