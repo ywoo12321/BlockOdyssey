@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../css/DataTable.css";
 const DataTable = (productList) => {
+  const [limit, setLimit] = useState(10);
+  const [page, setPage] = useState(1);
+  const offset = (page - 1) * limit;
   const tittleList = {
     상품번호: "id",
     상품명: "title",
@@ -10,8 +13,6 @@ const DataTable = (productList) => {
     평점: "rating",
     재고: "stock",
   };
-  let firstNumber = 1;
-  let lastNumber = 10;
   return (
     <>
       <div className="listTittle">
@@ -23,7 +24,7 @@ const DataTable = (productList) => {
       </div>
       <div className="table">
         {productList.props
-          .slice(firstNumber - 1, lastNumber)
+          .slice(offset, offset + limit)
           .map((product, productIdx) => (
             <div className="product" key={productIdx}>
               {Object.entries(tittleList).map(([item, itemIdx]) => (
@@ -38,7 +39,21 @@ const DataTable = (productList) => {
             </div>
           ))}
       </div>
-      <div className="page">1,2,3,4,5</div>
+      <div className="page">
+        <label>
+          페이지 당 행:&nbsp;
+          <select
+            className="optionNumber"
+            type="number"
+            value={limit}
+            onChange={({ target: { value } }) => setLimit(Number(value))}
+          >
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+        </label>
+      </div>
     </>
   );
 };
