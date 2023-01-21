@@ -3,7 +3,14 @@ import DataTable from "./components/DataTable";
 import "./css/App.css";
 const App = (props) => {
   const selectList = ["전체", "상품명", "브랜드", "상품내용"];
+  const searchTagList = {
+    전체: ["brand", "description", "title"],
+    상품명: ["title"],
+    브랜드: ["brand"],
+    상품내용: ["description"],
+  };
   const [Selected, setSelected] = useState("");
+  const [searchTag, setSearchTag] = useState("");
   const [productList, setProductList] = useState([]);
   const [dataList, setDataList] = useState([]);
   const [userInput, setUserInput] = useState("");
@@ -21,6 +28,7 @@ const App = (props) => {
   }, []);
   const handleSelect = (e) => {
     setSelected(e.target.value);
+    setSearchTag(e.target.value);
   };
   const getValue = (e) => {
     console.log(e.target.value);
@@ -28,7 +36,7 @@ const App = (props) => {
   };
   const getKeyByValue = (obj, value) => {
     let check = 0;
-    return ["brand", "description", "title"].map((item) => {
+    return searchTagList[Selected].map((item) => {
       searchTarget = obj[item];
       if (searchTarget.includes(value) === true) {
         check += 1;
